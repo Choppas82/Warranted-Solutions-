@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warranted Solutions | Enterprise IT Consulting</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Smooth scrolling behavior for the button */
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
 <body class="bg-slate-900 text-white min-h-screen">
     <main class="max-w-6xl mx-auto p-8">
         <header class="text-center py-20 bg-gradient-to-r from-blue-700 to-indigo-900 rounded-3xl shadow-2xl mb-12 border border-slate-700">
             <h1 class="text-5xl font-extrabold mb-4 tracking-tight">Warranted Solutions</h1>
             <p class="text-2xl text-blue-200 mb-8 font-light">Secure Enterprise IT Infrastructure & Cloud Architecture</p>
-            <a href="mailto:admin@warrantedsolutions.com" class="bg-white text-indigo-900 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition shadow-lg shadow-blue-500/50">
+            <a href="#contact" class="bg-white text-indigo-900 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition shadow-lg shadow-blue-500/50 inline-block">
                 Discuss Your Project
             </a>
         </header>
@@ -23,7 +27,7 @@
             </p>
         </section>
 
-        <section class="py-16">
+        <section class="py-16 border-b border-slate-800">
             <h2 class="text-3xl font-bold mb-10 text-center text-slate-100">Core Capabilities</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 
@@ -50,9 +54,39 @@
             </div>
         </section>
 
+        <section id="contact" class="py-16">
+            <h2 class="text-3xl font-bold mb-10 text-center text-slate-100">Contact Us</h2>
+            <div class="max-w-2xl mx-auto bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-lg">
+                <form action="https://formsubmit.co/admin@warrantedsolutions.com" method="POST" class="space-y-6">
+                    
+                    <input type="hidden" name="_subject" value="New Inquiry from Warranted Solutions Website">
+                    
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                        <input type="text" name="name" id="name" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-600 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+                        <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-600 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-300 mb-2">How can we help you?</label>
+                        <textarea name="message" id="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-600 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-500/50 text-lg">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
         <footer class="text-center py-12 text-slate-500 border-t border-slate-800">
             <p>&copy; 2026 Warranted Solutions. All rights reserved.</p>
-            <p class="mt-2 text-sm">Need help? Email us at <a href="mailto:admin@warrantedsolutions.com" class="text-blue-400 hover:underline">admin@warrantedsolutions.com</a></p>
         </footer>
     </main>
 </body>
