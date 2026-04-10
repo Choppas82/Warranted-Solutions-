@@ -1,93 +1,577 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warranted Solutions | Enterprise IT Consulting</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Smooth scrolling behavior for the button */
-        html { scroll-behavior: smooth; }
-    </style>
-</head>
-<body class="bg-slate-900 text-white min-h-screen">
-    <main class="max-w-6xl mx-auto p-8">
-        <header class="text-center py-20 bg-gradient-to-r from-blue-700 to-indigo-900 rounded-3xl shadow-2xl mb-12 border border-slate-700">
-            <h1 class="text-5xl font-extrabold mb-4 tracking-tight">Warranted Solutions</h1>
-            <p class="text-2xl text-blue-200 mb-8 font-light">Secure Enterprise IT Infrastructure & Cloud Architecture</p>
-            <a href="#contact" class="bg-white text-indigo-900 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition shadow-lg shadow-blue-500/50 inline-block">
-                Discuss Your Project
-            </a>
-        </header>
-
-        <section class="py-12 border-b border-slate-800">
-            <h2 class="text-3xl font-bold mb-6 text-center text-slate-100">About Our Firm</h2>
-            <p class="text-lg text-slate-400 text-center max-w-4xl mx-auto leading-relaxed">
-                With over 20 years of enterprise systems administration experience and a background supporting Top Secret/SCI cleared environments, Warranted Solutions specializes in secure, high-availability IT infrastructure. We lead the design, implementation, and management of complex on-premise, virtualized, and cloud-based environments for government and commercial sectors.
-            </p>
-        </section>
-
-        <section class="py-16 border-b border-slate-800">
-            <h2 class="text-3xl font-bold mb-10 text-center text-slate-100">Core Capabilities</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                
-                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-blue-500 transition shadow-lg">
-                    <h3 class="text-2xl font-bold mb-3 text-blue-400">Identity & Access Management</h3>
-                    <p class="text-slate-300">Expert engineering of Active Directory and Azure AD environments. We manage complex, multi-domain architectures, implement secure SSO/SAML integrations, and enforce rigorous Group Policy (GPO) standards across enterprise networks.</p>
-                </div>
-
-                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-indigo-400 transition shadow-lg">
-                    <h3 class="text-2xl font-bold mb-3 text-indigo-400">Cloud & Virtualization Architecture</h3>
-                    <p class="text-slate-300">Led by Microsoft Certified Azure Solution Architects, we design and deploy scalable cloud environments and high-availability VMware Datacenters (ESXi, vCenter) to ensure seamless performance and resource scheduling.</p>
-                </div>
-
-                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-cyan-400 transition shadow-lg">
-                    <h3 class="text-2xl font-bold mb-3 text-cyan-400">Cybersecurity & Compliance</h3>
-                    <p class="text-slate-300">We build defense-in-depth cyber programs. From applying STIGs and SCAP tools to managing HBSS McAfee/ePolicy Orchestrator, we ensure your infrastructure meets stringent Department of Defense (DoD) and commercial security standards.</p>
-                </div>
-
-                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-purple-400 transition shadow-lg">
-                    <h3 class="text-2xl font-bold mb-3 text-purple-400">Enterprise Systems Integration</h3>
-                    <p class="text-slate-300">Flawless execution of physical-to-virtual migrations and enterprise stack deployments. We install, configure, and maintain fully redundant environments including SCCM, SQL Server, and High-Availability Exchange/DAGs.</p>
-                </div>
-
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Trading Bot Dashboard</title>
+      <style>
+        :root {
+          --bg: #0b1020;
+          --panel: #121a2f;
+          --panel-2: #18213b;
+          --text: #e8eefc;
+          --muted: #9fb0d9;
+          --green: #22c55e;
+          --red: #ef4444;
+          --yellow: #f59e0b;
+          --blue: #38bdf8;
+          --border: rgba(255,255,255,.09);
+          --shadow: 0 10px 30px rgba(0,0,0,.28);
+          --radius: 18px;
+        }
+    
+        * { box-sizing: border-box; }
+        body {
+          margin: 0;
+          font-family: Inter, Arial, Helvetica, sans-serif;
+          background: linear-gradient(180deg, #09101d 0%, #0b1020 100%);
+          color: var(--text);
+        }
+    
+        .wrap {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 24px;
+        }
+    
+        .topbar {
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+          align-items: center;
+          flex-wrap: wrap;
+          margin-bottom: 24px;
+        }
+    
+        h1 {
+          margin: 0;
+          font-size: 32px;
+          line-height: 1.1;
+        }
+    
+        .sub {
+          color: var(--muted);
+          margin-top: 6px;
+          font-size: 14px;
+        }
+    
+        .actions {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+    
+        input, button, select {
+          border: 1px solid var(--border);
+          background: var(--panel);
+          color: var(--text);
+          border-radius: 12px;
+          padding: 10px 14px;
+          font-size: 14px;
+        }
+    
+        button {
+          cursor: pointer;
+          background: var(--panel-2);
+        }
+    
+        button:hover {
+          filter: brightness(1.08);
+        }
+    
+        .grid {
+          display: grid;
+          gap: 16px;
+        }
+    
+        .metrics {
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          margin-bottom: 16px;
+        }
+    
+        .card {
+          background: rgba(18,26,47,.95);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          box-shadow: var(--shadow);
+        }
+    
+        .metric {
+          padding: 18px;
+        }
+    
+        .metric-title {
+          color: var(--muted);
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: .08em;
+          margin-bottom: 8px;
+        }
+    
+        .metric-value {
+          font-size: 24px;
+          font-weight: 700;
+        }
+    
+        .layout {
+          grid-template-columns: 2fr 1fr;
+          align-items: start;
+        }
+    
+        .section-title {
+          font-size: 18px;
+          font-weight: 700;
+          margin: 0;
+        }
+    
+        .card-head {
+          padding: 18px 18px 0;
+        }
+    
+        .card-body {
+          padding: 18px;
+        }
+    
+        .pill-row {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          margin-bottom: 14px;
+        }
+    
+        .pill {
+          border: 1px solid var(--border);
+          padding: 7px 12px;
+          border-radius: 999px;
+          font-size: 12px;
+          background: rgba(255,255,255,.03);
+        }
+    
+        .pill.good { color: var(--green); border-color: rgba(34,197,94,.35); }
+        .pill.bad { color: var(--red); border-color: rgba(239,68,68,.35); }
+        .pill.warn { color: var(--yellow); border-color: rgba(245,158,11,.35); }
+        .pill.info { color: var(--blue); border-color: rgba(56,189,248,.35); }
+    
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 14px;
+        }
+    
+        th, td {
+          text-align: left;
+          padding: 12px 10px;
+          border-bottom: 1px solid rgba(255,255,255,.06);
+          vertical-align: top;
+        }
+    
+        th {
+          color: var(--muted);
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: .06em;
+        }
+    
+        tr:last-child td {
+          border-bottom: 0;
+        }
+    
+        .tag-list {
+          display: flex;
+          gap: 6px;
+          flex-wrap: wrap;
+        }
+    
+        .tag {
+          padding: 5px 8px;
+          border-radius: 999px;
+          font-size: 11px;
+          border: 1px solid var(--border);
+          background: rgba(255,255,255,.03);
+          color: var(--muted);
+        }
+    
+        .status-yes {
+          color: white;
+          background: var(--green);
+          border-color: transparent;
+        }
+    
+        .status-no {
+          color: white;
+          background: #2b334d;
+          border-color: transparent;
+        }
+    
+        .stack {
+          display: grid;
+          gap: 16px;
+        }
+    
+        .position, .trade {
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          padding: 14px;
+          background: rgba(255,255,255,.02);
+        }
+    
+        .row {
+          display: flex;
+          justify-content: space-between;
+          gap: 12px;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+    
+        .muted {
+          color: var(--muted);
+        }
+    
+        .green { color: var(--green); }
+        .red { color: var(--red); }
+        .yellow { color: var(--yellow); }
+    
+        .mini-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0,1fr));
+          gap: 8px;
+          margin-top: 12px;
+          font-size: 13px;
+        }
+    
+        .footer-note {
+          margin-top: 16px;
+          color: var(--muted);
+          font-size: 12px;
+        }
+    
+        .error {
+          color: #ffd3d3;
+          background: rgba(239,68,68,.12);
+          border: 1px solid rgba(239,68,68,.28);
+          padding: 10px 12px;
+          border-radius: 12px;
+          margin-top: 12px;
+          display: none;
+        }
+    
+        @media (max-width: 1100px) {
+          .metrics { grid-template-columns: repeat(2, minmax(0,1fr)); }
+          .layout { grid-template-columns: 1fr; }
+        }
+    
+        @media (max-width: 640px) {
+          .metrics { grid-template-columns: 1fr; }
+          .mini-grid { grid-template-columns: 1fr; }
+          h1 { font-size: 26px; }
+          .wrap { padding: 16px; }
+          th:nth-child(6), td:nth-child(6) { display: none; }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="wrap">
+        <div class="topbar">
+          <div>
+            <h1>Trading Bot Dashboard</h1>
+            <div class="sub">Massive market data, Alpaca execution, live watchlist, positions, and trade decisions.</div>
+          </div>
+    
+          <div class="actions">
+            <input id="symbolFilter" type="text" placeholder="Filter symbol" />
+            <input id="apiUrl" type="text" placeholder="/dashboard.json or full URL" style="min-width: 260px;" />
+            <button id="refreshBtn">Refresh</button>
+          </div>
+        </div>
+    
+        <div class="grid metrics">
+          <div class="card metric">
+            <div class="metric-title">Bot Status</div>
+            <div class="metric-value" id="botStatus">—</div>
+          </div>
+          <div class="card metric">
+            <div class="metric-title">Account Status</div>
+            <div class="metric-value" id="accountStatus">—</div>
+          </div>
+          <div class="card metric">
+            <div class="metric-title">Buying Power</div>
+            <div class="metric-value" id="buyingPower">—</div>
+          </div>
+          <div class="card metric">
+            <div class="metric-title">Market</div>
+            <div class="metric-value" id="marketOpen">—</div>
+          </div>
+          <div class="card metric">
+            <div class="metric-title">Open P/L</div>
+            <div class="metric-value" id="openPnl">—</div>
+          </div>
+        </div>
+    
+        <div class="grid layout">
+          <div class="card">
+            <div class="card-head">
+              <div class="section-title">Active Watchlist</div>
             </div>
-        </section>
-
-        <section id="contact" class="py-16">
-            <h2 class="text-3xl font-bold mb-10 text-center text-slate-100">Contact Us</h2>
-            <div class="max-w-2xl mx-auto bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-lg">
-                <form action="https://formsubmit.co/admin@warrantedsolutions.com" method="POST" class="space-y-6">
-                    
-                    <input type="hidden" name="_subject" value="New Inquiry from Warranted Solutions Website">
-                    
-                    <input type="hidden" name="_captcha" value="false">
-
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
-                        <input type="text" name="name" id="name" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-600 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
-                    </div>
-
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
-                        <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-600 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
-                    </div>
-
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-slate-300 mb-2">How can we help you?</label>
-                        <textarea name="message" id="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-600 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-500/50 text-lg">
-                        Send Message
-                    </button>
-                </form>
+            <div class="card-body">
+              <div class="pill-row" id="watchlistPills"></div>
+              <div style="overflow-x:auto;">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Symbol</th>
+                      <th>Score</th>
+                      <th>Trend</th>
+                      <th>Price</th>
+                      <th>RV</th>
+                      <th>Setup</th>
+                      <th>Buy Ready</th>
+                      <th>Blocked By</th>
+                    </tr>
+                  </thead>
+                  <tbody id="watchlistTable"></tbody>
+                </table>
+              </div>
+              <div class="error" id="errorBox"></div>
             </div>
-        </section>
-
-        <footer class="text-center py-12 text-slate-500 border-t border-slate-800">
-            <p>&copy; 2026 Warranted Solutions. All rights reserved.</p>
-        </footer>
-    </main>
-</body>
-</html>
+          </div>
+    
+          <div class="stack">
+            <div class="card">
+              <div class="card-head">
+                <div class="section-title">Open Positions</div>
+              </div>
+              <div class="card-body" id="positionsBox"></div>
+            </div>
+    
+            <div class="card">
+              <div class="card-head">
+                <div class="section-title">Recent Trades</div>
+              </div>
+              <div class="card-body" id="tradesBox"></div>
+            </div>
+    
+            <div class="card">
+              <div class="card-head">
+                <div class="section-title">System Notes</div>
+              </div>
+              <div class="card-body">
+                <div class="mini-grid">
+                  <div><strong>Last Update</strong><br><span class="muted" id="lastUpdate">—</span></div>
+                  <div><strong>Candidate Pool</strong><br><span class="muted" id="candidatePool">—</span></div>
+                  <div><strong>Source</strong><br><span class="muted" id="sourceUrl">—</span></div>
+                  <div><strong>Refresh Rate</strong><br><span class="muted">10 seconds</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="footer-note">
+          Point this page at a JSON file from your bot, like <code>dashboard.json</code>.
+        </div>
+      </div>
+    
+      <script>
+        const mockData = {
+          bot_status: "running",
+          account_status: "ACTIVE",
+          buying_power: 199146.55,
+          last_update: "2026-04-10 12:05:04",
+          market_open: true,
+          active_watchlist: ["SPY", "TSLA", "OGN", "MRVL", "PATH", "SMCI", "CORD", "SKYQ", "ZNTL", "PANW"],
+          candidate_pool: ["SPY", "TSLA", "ZNTL", "SKYQ", "FSLY", "OGN", "NET", "CRWV", "SNOW", "AAOI"],
+          positions: [
+            { symbol: "AMZN", qty: 1, entry: 239.93, current: 237.83, tp: 244.73, sl: 237.53, pnl: -2.10, pnl_pct: -0.87, held_min: 7 },
+            { symbol: "QQQ", qty: 1, entry: 612.94, current: 610.32, tp: 625.20, sl: 606.81, pnl: -2.62, pnl_pct: -0.43, held_min: 7 }
+          ],
+          watchlist_details: [
+            { symbol: "OGN", score: 115.7, trend_strength: 82.4, price: 8.69, rv: 0.51, buy_ready: false, failed: ["market","rv","price_zone"], five_min_up: true, one_min_up: true, hhhl: true, breakout: false, pullback: true, support_bounce: false },
+            { symbol: "MRVL", score: 110.29, trend_strength: 79.2, price: 127.52, rv: 0.77, buy_ready: false, failed: ["market","rv"], five_min_up: true, one_min_up: true, hhhl: true, breakout: true, pullback: false, support_bounce: false },
+            { symbol: "PATH", score: 99.78, trend_strength: 73.1, price: 9.54, rv: 0.65, buy_ready: false, failed: ["market","rv","price_zone"], five_min_up: true, one_min_up: true, hhhl: true, breakout: false, pullback: true, support_bounce: false },
+            { symbol: "SMCI", score: 98.06, trend_strength: 71.8, price: 24.76, rv: 0.59, buy_ready: false, failed: ["market","rv"], five_min_up: true, one_min_up: true, hhhl: true, breakout: false, pullback: false, support_bounce: true }
+          ],
+          recent_trades: [
+            { time: "2026-04-10 10:26:35", symbol: "AAPL", action: "BUY", price: 261.54, reason: "chart_trend_dynamic_entry", realized_pnl: 0 },
+            { time: "2026-04-10 15:49:40", symbol: "AAPL", action: "SELL", price: 260.91, reason: "forced_end_of_day", realized_pnl: 2.19 }
+          ]
+        };
+    
+        const els = {
+          botStatus: document.getElementById("botStatus"),
+          accountStatus: document.getElementById("accountStatus"),
+          buyingPower: document.getElementById("buyingPower"),
+          marketOpen: document.getElementById("marketOpen"),
+          openPnl: document.getElementById("openPnl"),
+          watchlistPills: document.getElementById("watchlistPills"),
+          watchlistTable: document.getElementById("watchlistTable"),
+          positionsBox: document.getElementById("positionsBox"),
+          tradesBox: document.getElementById("tradesBox"),
+          lastUpdate: document.getElementById("lastUpdate"),
+          candidatePool: document.getElementById("candidatePool"),
+          sourceUrl: document.getElementById("sourceUrl"),
+          apiUrl: document.getElementById("apiUrl"),
+          symbolFilter: document.getElementById("symbolFilter"),
+          refreshBtn: document.getElementById("refreshBtn"),
+          errorBox: document.getElementById("errorBox")
+        };
+    
+        function currency(v) {
+          if (v === undefined || v === null || Number.isNaN(v)) return "—";
+          return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(v);
+        }
+    
+        function num(v, digits = 2) {
+          if (v === undefined || v === null || Number.isNaN(v)) return "—";
+          return Number(v).toFixed(digits);
+        }
+    
+        function pct(v) {
+          if (v === undefined || v === null || Number.isNaN(v)) return "—";
+          return `${Number(v).toFixed(2)}%`;
+        }
+    
+        function escapeHtml(str) {
+          return String(str)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+        }
+    
+        function setupTag(label, ok) {
+          const cls = ok ? "pill good" : "pill bad";
+          return `<span class="${cls}">${escapeHtml(label)}</span>`;
+        }
+    
+        function render(data) {
+          const openPnl = (data.positions || []).reduce((sum, p) => sum + (Number(p.pnl) || 0), 0);
+    
+          els.botStatus.textContent = data.bot_status || "—";
+          els.accountStatus.textContent = data.account_status || "—";
+          els.buyingPower.textContent = currency(data.buying_power);
+          els.marketOpen.textContent = data.market_open ? "Open" : "Closed";
+          els.openPnl.textContent = currency(openPnl);
+          els.openPnl.className = "metric-value " + (openPnl >= 0 ? "green" : "red");
+    
+          els.lastUpdate.textContent = data.last_update || "—";
+          els.candidatePool.textContent = (data.candidate_pool || []).slice(0, 10).join(", ") || "—";
+    
+          const filter = (els.symbolFilter.value || "").trim().toUpperCase();
+    
+          els.watchlistPills.innerHTML = (data.active_watchlist || [])
+            .map(s => `<span class="pill">${escapeHtml(s)}</span>`)
+            .join("");
+    
+          const watchItems = (data.watchlist_details || []).filter(item => {
+            if (!filter) return true;
+            return (item.symbol || "").toUpperCase().includes(filter);
+          });
+    
+          els.watchlistTable.innerHTML = watchItems.length ? watchItems.map(item => `
+            <tr>
+              <td><strong>${escapeHtml(item.symbol)}</strong></td>
+              <td>${num(item.score)}</td>
+              <td>${num(item.trend_strength)}</td>
+              <td>${currency(item.price)}</td>
+              <td>${num(item.rv)}</td>
+              <td>
+                <div class="tag-list">
+                  ${setupTag("5m", !!item.five_min_up)}
+                  ${setupTag("1m", !!item.one_min_up)}
+                  ${setupTag("HH/HL", !!item.hhhl)}
+                  ${setupTag("Breakout", !!item.breakout)}
+                  ${setupTag("Pullback", !!item.pullback)}
+                  ${setupTag("Bounce", !!item.support_bounce)}
+                </div>
+              </td>
+              <td>
+                <span class="tag ${item.buy_ready ? "status-yes" : "status-no"}">
+                  ${item.buy_ready ? "YES" : "NO"}
+                </span>
+              </td>
+              <td>
+                <div class="tag-list">
+                  ${(item.failed && item.failed.length)
+                    ? item.failed.map(f => `<span class="tag">${escapeHtml(f)}</span>`).join("")
+                    : `<span class="muted">none</span>`
+                  }
+                </div>
+              </td>
+            </tr>
+          `).join("") : `
+            <tr><td colspan="8" class="muted">No watchlist data.</td></tr>
+          `;
+    
+          els.positionsBox.innerHTML = (data.positions || []).length ? data.positions.map(p => `
+            <div class="position">
+              <div class="row">
+                <div>
+                  <div style="font-size:16px;font-weight:700;">${escapeHtml(p.symbol)}</div>
+                  <div class="muted" style="font-size:12px;">Qty ${escapeHtml(p.qty)} · Held ${escapeHtml(p.held_min)} min</div>
+                </div>
+                <div class="${Number(p.pnl) >= 0 ? "green" : "red"}" style="font-weight:700;">
+                  ${currency(p.pnl)}
+                </div>
+              </div>
+    
+              <div class="mini-grid">
+                <div>Entry: <strong>${currency(p.entry)}</strong></div>
+                <div>Current: <strong>${currency(p.current)}</strong></div>
+                <div>Target: <strong>${currency(p.tp)}</strong></div>
+                <div>Stop: <strong>${currency(p.sl)}</strong></div>
+                <div>P/L %: <strong>${pct(p.pnl_pct)}</strong></div>
+              </div>
+            </div>
+          `).join("") : `<div class="muted">No open positions.</div>`;
+    
+          els.tradesBox.innerHTML = (data.recent_trades || []).length ? data.recent_trades.map(t => `
+            <div class="trade">
+              <div class="row">
+                <div><strong>${escapeHtml(t.symbol)} · ${escapeHtml(t.action)}</strong></div>
+                <div>${currency(t.price)}</div>
+              </div>
+              <div class="muted" style="font-size:12px;margin-top:4px;">${escapeHtml(t.time || "")}</div>
+              <div class="tag-list" style="margin-top:10px;">
+                ${t.reason ? `<span class="tag">${escapeHtml(t.reason)}</span>` : ""}
+                ${typeof t.realized_pnl === "number"
+                  ? `<span class="tag ${t.realized_pnl >= 0 ? "status-yes" : "status-no"}">${currency(t.realized_pnl)}</span>`
+                  : ""
+                }
+              </div>
+            </div>
+          `).join("") : `<div class="muted">No recent trades.</div>`;
+        }
+    
+        async function loadData() {
+          const url = els.apiUrl.value.trim() || "./dashboard.json";
+          els.sourceUrl.textContent = url;
+    
+          try {
+            els.errorBox.style.display = "none";
+            const res = await fetch(url, { cache: "no-store" });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+            render(data);
+          } catch (err) {
+            render(mockData);
+            els.errorBox.style.display = "block";
+            els.errorBox.textContent = `Could not load live data from ${url}. Showing demo data. ${err.message}`;
+          }
+        }
+    
+        els.refreshBtn.addEventListener("click", loadData);
+        els.symbolFilter.addEventListener("input", () => loadData());
+    
+        const savedUrl = localStorage.getItem("bot_dashboard_url");
+        if (savedUrl) els.apiUrl.value = savedUrl;
+        els.apiUrl.addEventListener("change", () => {
+          localStorage.setItem("bot_dashboard_url", els.apiUrl.value.trim());
+        });
+    
+        loadData();
+        setInterval(loadData, 10000);
+      </script>
+    </body>
+    </html>
