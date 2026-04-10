@@ -1,0 +1,20 @@
+{
+      "bot_status": "running",
+      "account_status": "ACTIVE",
+      "buying_power": 199146.55,
+      "last_update": "2026-04-10 12:05:04",
+      "market_open": true,
+      "active_watchlist": ["SPY", "TSLA", "OGN", "MRVL", "PATH", "SMCI", "CORD", "SKYQ", "ZNTL", "PANW"],
+      "candidate_pool": ["SPY", "TSLA", "ZNTL", "SKYQ", "FSLY", "OGN", "NET", "CRWV", "SNOW", "AAOI"],
+      "positions": [
+        { "symbol": "AMZN", "qty": 1, "entry": 239.93, "current": 237.83, "tp": 244.73, "sl": 237.53, "pnl": -2.10, "pnl_pct": -0.87, "held_min": 7 },
+        { "symbol": "QQQ", "qty": 1, "entry": 612.94, "current": 610.32, "tp": 625.20, "sl": 606.81, "pnl": -2.62, "pnl_pct": -0.43, "held_min": 7 }
+      ],
+      "watchlist_details": [
+        { "symbol": "OGN", "score": 115.7, "trend_strength": 82.4, "price": 8.69, "rv": 0.51, "buy_ready": false, "failed": ["market","rv","price_zone"], "five_min_up": true, "one_min_up": true, "hhhl": true, "breakout": false, "pullback": true, "support_bounce": false },
+        { "symbol": "MRVL", "score": 110.29, "trend_strength": 79.2, "price": 127.52, "rv": 0.77, "buy_ready": false, "failed": ["market","rv"], "five_min_up": true, "one_min_up": true, "hhhl": true, "breakout": true, "pullback": false, "support_bounce": false }
+      ],
+      "recent_trades": [
+        { "time": "2026-04-10 10:26:35", "symbol": "AAPL", "action": "BUY", "price": 261.54, "reason": "chart_trend_dynamic_entry", "realized_pnl": 0 }
+      ]
+    }
